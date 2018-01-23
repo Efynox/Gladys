@@ -160,8 +160,8 @@ module.exports.routes = {
   'post /module/:slug/config': 'ModuleController.config',
   'delete /module/:id': 'ModuleController.uninstall',
   'post /module/:id/upgrade': 'ModuleController.upgrade',
-  'get /module/:id/settings': 'ModuleController.getSettings',
-  'post /module/:id/settings': 'ModuleController.saveSettings',
+  'get /module/:slug/settings': 'ModuleController.getSettings',
+  'post /module/:slug/settings': 'ModuleController.saveSettings',
 
   // Music
   'post /music/flushqueue': 'MusicController.flushQueue',
