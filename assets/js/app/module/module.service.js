@@ -48,8 +48,12 @@
             return $http({method: 'POST', url: '/module/' + id + '/upgrade', data: {version: version}});
         }
 
-        function saveSettings(id, params){
-            return $http({method: 'POST', url: '/module/' + id + '/saveSettings', data: params});
+        function getSettings(slug){
+            return $http({method: 'GET', url: '/module/' + slug + '/settings'});
+        }
+
+        function saveSettings(slugid, params){
+            return $http({method: 'POST', url: '/module/' + slug + '/settings', data: params});
         }
     }
 })();

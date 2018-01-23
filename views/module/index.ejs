@@ -44,7 +44,7 @@
                   <td>{{module.status}}</td>
                   <td>
                     <button class="btn btn-info btn-sm" ng-click="vm.configModule(module.slug);">Auto-config</button>
-                    <button class="btn btn-success btn-sm" ng-click="vm.showSettings($index, module);">Paramètres</button>
+                    <button class="btn btn-success btn-sm" ng-click="vm.showSettings(module);">Paramètres</button>
                   </td>
                   <td><button class="btn btn-success btn-sm" ng-click="vm.upgradeModule($index, module);"><%= __('module-upgrade') %></button></td>
                   <td><button class="btn btn-danger btn-sm" ng-click="vm.uninstallModule($index, module.id);"><%= __('module-uninstall') %></button></td>

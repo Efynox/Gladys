@@ -26,6 +26,7 @@
         vm.configModule = configModule;
         vm.uninstallModule = uninstallModule;
         vm.showModule = showModule;
+        vm.showSettings = showSettings;
         vm.getModulesStore = getModulesStore;
         vm.getReviews = getReviews;
         vm.getVersions = getVersions;
@@ -203,15 +204,20 @@
        
         // show the module clicked
         function showSettings(module){
-           
-            vm.selectedModule = module;
-            
+            moduleService.getSettings(module.slug)
+            .then(function(params) {
+                vm.selectedModule = module;
+                vm.moduleSettings = params;
+                $('#modalShowModuleSettings').modal('show');
+            })
+            .catch(function(err){
+                notificationService.errorNotificationTranslated('MODULE.CONFIG_FAIL_NOTIFICATION', err.data);
+            });
             // showing the modal
-            $('#modalShowModuleSettings').modal('show');
         }
 
         function saveSettings(module){
-            return moduleService.saveSettings(module.id, params)
+            return moduleService.saveSettings(module.slug, params)
             .then(function(){
                 notificationService.successNotificationTranslated('MODULE.CONFIG_SUCCESS_NOTIFICATION');
             })

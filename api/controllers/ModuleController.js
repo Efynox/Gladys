@@ -29,18 +29,6 @@ module.exports = {
 
         return res.json({message: 'Installation started with success'});
     },
-
-    saveSettings: function(req, res, next){
-        
-        for (const key in req.params) {
-            if (key.hasOwnProperty(key)) {
-                const value = object[key];
-                gladys.param.setValue({ name = key, value = value });
-            }
-        }
-        
-        return res.json({message: 'Settings saved'});
-    },
     
     config: function(req, res, next){
         gladys.module.config({slug: req.params.slug})
@@ -61,7 +49,29 @@ module.exports = {
     upgrade: function(req, res, next){
         gladys.module.upgrade({id: req.params.id, version: req.body.version});
         return res.json({message: 'Upgrade started with success'});
-    }
+    },
+
+    getSettings: function(req, res, next){
+        var params = {};
+        for (const key in gladys.modules[req.params.slug].params) {
+            if (key.hasOwnProperty(key)) {
+                params[key] = gladys.param.getValue(key);
+            }
+        }
+        return res.json(params);
+    },
+
+    saveSettings: function(req, res, next){
+        
+        for (const key in req.params) {
+            if (key.hasOwnProperty(key)) {
+                const value = object[key];
+                gladys.param.setValue({ name: key, value: value });
+            }
+        }
+        
+        return res.json({message: 'Settings saved'});
+    },
 	
 };
 
