@@ -23,7 +23,9 @@
             install: install,
             config: config,
             uninstall: uninstall,
-            upgrade: upgrade
+            upgrade: upgrade,
+            getSettings: getSettings,
+            saveSettings: saveSettings
         };
 
         return service;
