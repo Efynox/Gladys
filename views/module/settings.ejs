@@ -14,14 +14,14 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-4">
-              <div class="form-group" ng-show="vm.selectedModule.params != null">
-                <div class="row infos" ng-repeat="(key, type) in vm.selectedModule.params">
+              <div class="form-group" ng-show="vm.moduleSettings != null">
+                <div class="row infos" ng-repeat="(key, type) in vm.moduleSettings">
                   <strong>{{key}}</strong>
                   <intput type="text" aria-placeholder="{{value}}" />
                   <button type="button" ng-click="vm.saveSettings(vm.selectedModule);" class="btn">Save</button>
                 </div>
               </div>
-              <div class="form-group" ng-show="vm.selectedModule.params == null || vm.selectedModule.params.length == 0">
+              <div class="form-group" ng-show="vm.moduleSettings == null || vm.selectedModule.params.length == 0">
                 <p>No parameters for this module</p>
               </div>
             </div>
