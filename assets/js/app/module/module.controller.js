@@ -205,9 +205,9 @@
         // show the module clicked
         function showSettings(module){
             moduleService.getSettings(module.slug)
-            .then(function(params) {
+            .then(function(body) {
                 vm.selectedModule = module;
-                vm.moduleSettings = params;
+                vm.moduleSettings = body.data;
                 $('#modalShowModuleSettings').modal('show');
             })
             .catch(function(err){
