@@ -29,7 +29,18 @@ module.exports = {
 
         return res.json({message: 'Installation started with success'});
     },
-    
+
+    saveSettings: function(req, res, next){
+        
+        for (const key in req.params) {
+            if (key.hasOwnProperty(key)) {
+                const value = object[key];
+                gladys.param.setValue({ name = key, value = value });
+            }
+        }
+        
+        return res.json({message: 'Settings saved'});
+    },
     
     config: function(req, res, next){
         gladys.module.config({slug: req.params.slug})

@@ -201,5 +201,23 @@
              })
        }
        
+        // show the module clicked
+        function showSettings(module){
+           
+            vm.selectedModule = module;
+            
+            // showing the modal
+            $('#modalShowModuleSettings').modal('show');
+        }
+
+        function saveSettings(module){
+            return moduleService.saveSettings(module.id, params)
+            .then(function(){
+                notificationService.successNotificationTranslated('MODULE.CONFIG_SUCCESS_NOTIFICATION');
+            })
+            .catch(function(err){
+                notificationService.errorNotificationTranslated('MODULE.CONFIG_FAIL_NOTIFICATION', err.data);
+            })
+        }
     }
 })();
