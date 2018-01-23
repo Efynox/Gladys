@@ -52,11 +52,7 @@ module.exports = {
     },
 
     getSettings: function(req, res, next){
-        var params = {};
-        for (const key in gladys.modules[req.params.slug].params) {
-            params[key] = gladys.param.getValue(key);
-        }
-        return res.json(params);
+        return res.json(gladys.modules[req.params.slug].params);
     },
 
     saveSettings: function(req, res, next){
