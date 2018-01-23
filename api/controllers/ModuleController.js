@@ -54,9 +54,7 @@ module.exports = {
     getSettings: function(req, res, next){
         var params = {};
         for (const key in gladys.modules[req.params.slug].params) {
-            if (key.hasOwnProperty(key)) {
-                params[key] = gladys.param.getValue(key);
-            }
+            params[key] = gladys.param.getValue(key);
         }
         return res.json(params);
     },
